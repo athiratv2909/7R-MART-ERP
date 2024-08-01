@@ -7,8 +7,8 @@ public class Constants {
 	//fetch path of file 
 		public static final String CONFIGFILE=System.getProperty("user.dir")+File.separator+"src"+File.separator+"main"+File.separator+"resources"+File.separator+"config.propertise";
 		public static final String TestDataFile=System.getProperty("user.dir")+"\\src\\test\\resources\\TestData.xlsx";
-		public static final String TESTDATAFILEIMAGEMANAGEPAGESADD=System.getProperty("user.dir")+"\\src\\test\\resources\\television.jpg";
-		public static final String TESTDATA_FILEIMAGE_UPDATEIN_MANAGECATEGORY=System.getProperty("user.dir")+"\\src\\test\\resources\\fridge.jpg";
+		public static final String TESTDATAFILEIMAGEMANAGEPAGESADD=System.getProperty("user.dir")+"\\src\\test\\resources\\TV.jpg";
+		public static final String TESTDATA_FILEIMAGE_UPDATEIN_MANAGECATEGORY=System.getProperty("user.dir")+"\\src\\test\\resources\\book.jpg";
 		public static final String LOGIN_PAGE="Login";
 		public static final String SUB_CATEGORY_DATA_PAGE="AddInSubCategoryData";
 		public static final String NEWS_DATA="AddNewsData";

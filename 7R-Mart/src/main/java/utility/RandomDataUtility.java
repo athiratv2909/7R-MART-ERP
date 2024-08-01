@@ -2,7 +2,7 @@ package utility;
 
 import com.github.javafaker.Faker;
 
-public class RandamUtility {
+public class RandomDataUtility {
 	
 	static Faker faker;
 	public static String getFirstName()

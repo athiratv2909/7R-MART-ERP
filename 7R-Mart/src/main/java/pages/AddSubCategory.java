@@ -1,82 +1,68 @@
 package pages;
-
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Select;
+
+
+import utility.PageUtility;
+import utility.WebElementUtility;
+import utility.WebElementUtility;
 
 public class AddSubCategory {
 	WebDriver driver;
-
-	public AddSubCategory(WebDriver driver)	
-	{
-	this.driver=driver;
-	PageFactory.initElements(driver,this);
-
-	}
-	@FindBy(xpath="//a[@href='https://groceryapp.uniqassosiates.com/admin/list-sub-category']")private WebElement addnewsubcategory;
-	@FindBy(xpath="//a[@href='https://groceryapp.uniqassosiates.com/admin/Subcategory/add']")private WebElement clicknewbtn;
-	@FindBy(xpath="//select[@id='cat_id']")private WebElement categorydropdownfield;
-	@FindBy(xpath="//input[@id='subcategory']")private WebElement addsubcategory;
-	@FindBy(xpath="//input[@id='main_img']")private WebElement fileupload;
-	@FindBy(xpath="//button[@class='btn btn-danger']")private WebElement submitbutton;
-	@FindBy(xpath="//div[@class='alert alert-danger alert-dismissible']")private WebElement headeralert;
-
+	utility.PageUtility pageutility=new utility.PageUtility();
+	WebElementUtility webelementutility=new WebElementUtility();
 	
-	
-
-	public void clickNewSubcategory()
+	public AddSubCategory(WebDriver driver)
 	{
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", addnewsubcategory);
+		this.driver=driver;
+		PageFactory.initElements(driver, this);
 	}
+	@FindBy(xpath="/html/body/div/div[1]/section/div/div/div[7]/div/a")private WebElement subcategory;
 	
+	@FindBy(xpath="//h1[text()='List Sub Categories']")private WebElement headerlistsubcategories;
+	@FindBy(xpath="//a[@onclick='click_button(1)']")private WebElement rednewbutton;
+	@FindBy(xpath="//h1[text()='Add Sub Category']")private WebElement headeraddsubcategory;
 	
-	public void newButtonClick()
+	@FindBy(xpath="//select[@class='form-control selectpicker']")private WebElement categorydropdown;
+	@FindBy(xpath="//input[@name='subcategory']")private WebElement subcategorytextfield;
+	@FindBy(xpath="//button[@name='create']")private WebElement savebutton;
+		
+	public void clickOnManageCategory()
 	{
-		clicknewbtn.click();
-	}
-	
-	public void selectCategoryFromDropdown()
-
-	{
-		Select select =new Select(categorydropdownfield);
-		select.selectByIndex(1);
-
-	}
-
-
-	public void enterSubCategory(String subcategory)
-
-	{
-		addsubcategory.sendKeys(subcategory);
-
-	}
-
-	public void fileUpload()
-	{
-		fileupload.sendKeys("file:///C:/Users/HP/Downloads/pdf-sample.pdf");
-		fileupload.click();
+		subcategory.click();
 		
 	}
+	public boolean isHeaderListSubCategoriesVisible()
+	{
+		boolean isheaderlistsubcategoriesavailable=webelementutility.isElementDisplayed(headerlistsubcategories);
+		return isheaderlistsubcategoriesavailable;
+	}
 	
+
+	public void clickOnNewInListSubCategory()
+	{
+	rednewbutton.click();
+	
+	}
+
+	public boolean isHeaderAddSubCategoryVisible()
+	{
+	boolean isheaderaddsubcategoryavailable=webelementutility.isElementDisplayed(headeraddsubcategory);
+	return isheaderaddsubcategoryavailable;
+	}
+	public void enterDataInAddSubcategoryWindow(String categorydropdownvalue,String subcategorytextfieldvalue)
+	{
+	
+	pageutility.selectByValue(categorydropdown, categorydropdownvalue);
+	subcategorytextfield.sendKeys(subcategorytextfieldvalue);
+	}
 	public void clickOnSaveButton()
 	{
-		submitbutton.click();
-		
+	savebutton.click();
+	
 	}
-	
-	
-	public boolean isHeaderLoaded()
-
-	{
-		return headeralert.isDisplayed();
 
 
 	}
-
-	
-	}	
-
-
